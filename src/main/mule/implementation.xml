@@ -1,7 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- [STUDIO:"HTTP Listener"]<?xml version="1.0" encoding="UTF-8"?> [STUDIO] -->
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+
+    <flow name="implementation" doc:id="05c7a08c-dd60-4905-83b8-92d35f41234b">    
+
+        <logger level="INFO" doc:name="QueryParams Logger " doc:id="4817a5ad-15b5-4677-a340-ec83946b4124" message="#[&quot;Query Params: &quot; ++ &#10;                    &quot;Name: &quot; ++ (attributes.queryParams.'name' default &quot;&quot;) ++ &#10;                    &quot; Order: &quot; ++ (attributes.queryParams.'order' default &quot;&quot;) ++&#10;                    &quot; Population: &quot; ++ (attributes.queryParams.'population' default 0) ++&#10;                    &quot; TotalNumber: &quot; ++ (attributes.queryParams.'totalNumber' default 0)]"/>
+		<ee:transform doc:name="Store queryParams">
+            <ee:message>
+            </ee:message>
+            <ee:variables>
+                <ee:set-variable variableName="nameVar"><![CDATA[attributes.queryParams.'name' default ""]]></ee:set-variable>
+                <ee:set-variable variableName="orderVar"><![CDATA[attributes.queryParams.'order' default ""]]></ee:set-variable>
+                <ee:set-variable variableName="populationVar"><![CDATA[attributes.queryParams.'population' default 0]]></ee:set-variable>
+                <ee:set-variable variableName="totalNumberVar"><![CDATA[attributes.queryParams.'totalNumber' default 0]]></ee:set-variable>
+            </ee:variables>
+        </ee:transform>     
+        <http:request method="GET" path="/v3.1/all" doc:name="HTTP Request to `REST Countries` API" config-ref="HTTP_Request_configuration">
+            <http:response-validator>
+                <http:success-status-code-validator values="200..299" />
+            </http:response-validator>
+        </http:request>
+        <set-variable variableName="restCountries" value="#[payload]" doc:name="Set restCountries Variable" mimeType="application/json"/>
+    
+</flow>
 </mule>

@@ -1,0 +1,579 @@
+I am a Mulesoft Developer and I need to create RAML specification for my Application in Cloudhub using yaml extension.Generete me specification for my endpoint with next data-
+protocol - http
+endpoint - called restcountries
+method GET
+It can take 4 optional queryparameters called:
+-name with type String
+-population with type Integer
+-totalNumber with type Integer
+-order.It must be enum value(ascend or descend)
+If responce is valid - return 200 http status code
+Put this data as response example:
+[
+  {
+    "name": {
+      "common": "Mauritania",
+      "official": "Islamic Republic of Mauritania",
+      "nativeName": {
+        "ara": {
+          "official": "الجمهورية الإسلامية الموريتانية",
+          "common": "موريتانيا"
+        }
+      }
+    },
+    "tld": [
+      ".mr"
+    ],
+    "cca2": "MR",
+    "ccn3": "478",
+    "cca3": "MRT",
+    "cioc": "MTN",
+    "independent": true,
+    "status": "officially-assigned",
+    "unMember": true,
+    "currencies": {
+      "MRU": {
+        "name": "Mauritanian ouguiya",
+        "symbol": "UM"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": [
+        "22"
+      ]
+    },
+    "capital": [
+      "Nouakchott"
+    ],
+    "altSpellings": [
+      "MR",
+      "Islamic Republic of Mauritania",
+      "al-Jumhūriyyah al-ʾIslāmiyyah al-Mūrītāniyyah"
+    ],
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "languages": {
+      "ara": "Arabic"
+    },
+    "translations": {
+      "ara": {
+        "official": "الجمهورية الإسلامية الموريتانية",
+        "common": "موريتانيا"
+      },
+      "bre": {
+        "official": "Republik islamek Maouritania",
+        "common": "Maouritania"
+      },
+      "ces": {
+        "official": "Mauritánská islámská republika",
+        "common": "Mauritánie"
+      },
+      "cym": {
+        "official": "Islamic Republic of Mauritania",
+        "common": "Mauritania"
+      },
+      "deu": {
+        "official": "Islamische Republik Mauretanien",
+        "common": "Mauretanien"
+      },
+      "est": {
+        "official": "Mauritaania Islamivabariik",
+        "common": "Mauritaania"
+      },
+      "fin": {
+        "official": "Mauritanian islamilainen tasavalta",
+        "common": "Mauritania"
+      },
+      "fra": {
+        "official": "République islamique de Mauritanie",
+        "common": "Mauritanie"
+      },
+      "hrv": {
+        "official": "Islamska Republika Mauritanija",
+        "common": "Mauritanija"
+      },
+      "hun": {
+        "official": "Mauritániai Iszlám Köztársaság",
+        "common": "Mauritánia"
+      },
+      "ita": {
+        "official": "Repubblica islamica di Mauritania",
+        "common": "Mauritania"
+      },
+      "jpn": {
+        "official": "モーリタニア·イスラム共和国",
+        "common": "モーリタニア"
+      },
+      "kor": {
+        "official": "모리타니 이슬람 공화국",
+        "common": "모리타니"
+      },
+      "nld": {
+        "official": "Islamitische Republiek Mauritanië",
+        "common": "Mauritanië"
+      },
+      "per": {
+        "official": "جمهوری اسلامی موریتانی",
+        "common": "موریتانی"
+      },
+      "pol": {
+        "official": "Islamska Republika Mauretańska",
+        "common": "Mauretania"
+      },
+      "por": {
+        "official": "República Islâmica da Mauritânia",
+        "common": "Mauritânia"
+      },
+      "rus": {
+        "official": "Исламская Республика Мавритания",
+        "common": "Мавритания"
+      },
+      "slk": {
+        "official": "Mauritánska islamská republika",
+        "common": "Mauritánia"
+      },
+      "spa": {
+        "official": "República Islámica de Mauritania",
+        "common": "Mauritania"
+      },
+      "srp": {
+        "official": "Исламска Република Мауританија",
+        "common": "Мауританија"
+      },
+      "swe": {
+        "official": "Islamiska republiken Mauretanien",
+        "common": "Mauretanien"
+      },
+      "tur": {
+        "official": "Moritanya İslam Cumhuriyeti",
+        "common": "Moritanya"
+      },
+      "urd": {
+        "official": "اسلامی جمہوریہ موریتانیہ",
+        "common": "موریتانیہ"
+      },
+      "zho": {
+        "official": "毛里塔尼亚伊斯兰共和国",
+        "common": "毛里塔尼亚"
+      }
+    },
+    "latlng": [
+      20,
+      -12
+    ],
+    "landlocked": false,
+    "borders": [
+      "DZA",
+      "MLI",
+      "SEN",
+      "ESH"
+    ],
+    "area": 1030700,
+    "demonyms": {
+      "eng": {
+        "f": "Mauritanian",
+        "m": "Mauritanian"
+      },
+      "fra": {
+        "f": "Mauritanienne",
+        "m": "Mauritanien"
+      }
+    },
+    "flag": "🇲🇷",
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/im2MmQ5jFjzxWBks5",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/192763"
+    },
+    "population": 4649660,
+    "gini": {
+      "2014": 32.6
+    },
+    "fifa": "MTN",
+    "car": {
+      "signs": [
+        "RIM"
+      ],
+      "side": "right"
+    },
+    "timezones": [
+      "UTC"
+    ],
+    "continents": [
+      "Africa"
+    ],
+    "flags": {
+      "png": "https://flagcdn.com/w320/mr.png",
+      "svg": "https://flagcdn.com/mr.svg",
+      "alt": "The flag of Mauritania has a green field with a thin red horizontal band at the top and bottom of the field. At the center of the field is a five-pointed yellow star above an upward facing yellow crescent."
+    },
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/mr.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/mr.svg"
+    },
+    "startOfWeek": "monday",
+    "capitalInfo": {
+      "latlng": [
+        18.07,
+        -15.97
+      ]
+    }
+  },
+  {
+    "name": {
+      "common": "Eritrea",
+      "official": "State of Eritrea",
+      "nativeName": {
+        "ara": {
+          "official": "دولة إرتريا",
+          "common": "إرتريا\u200e"
+        },
+        "eng": {
+          "official": "State of Eritrea",
+          "common": "Eritrea"
+        },
+        "tir": {
+          "official": "ሃገረ ኤርትራ",
+          "common": "ኤርትራ"
+        }
+      }
+    },
+    "tld": [
+      ".er"
+    ],
+    "cca2": "ER",
+    "ccn3": "232",
+    "cca3": "ERI",
+    "cioc": "ERI",
+    "independent": true,
+    "status": "officially-assigned",
+    "unMember": true,
+    "currencies": {
+      "ERN": {
+        "name": "Eritrean nakfa",
+        "symbol": "Nfk"
+      }
+    },
+    "idd": {
+      "root": "+2",
+      "suffixes": [
+        "91"
+      ]
+    },
+    "capital": [
+      "Asmara"
+    ],
+    "altSpellings": [
+      "ER",
+      "State of Eritrea",
+      "ሃገረ ኤርትራ",
+      "Dawlat Iritriyá",
+      "ʾErtrā",
+      "Iritriyā"
+    ],
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "languages": {
+      "ara": "Arabic",
+      "eng": "English",
+      "tir": "Tigrinya"
+    },
+    "translations": {
+      "ara": {
+        "official": "دولة إريتريا",
+        "common": "إريتريا"
+      },
+      "bre": {
+        "official": "Stad Eritrea",
+        "common": "Eritrea"
+      },
+      "ces": {
+        "official": "Stát Eritrea",
+        "common": "Eritrea"
+      },
+      "cym": {
+        "official": "Gwladwriaeth Eritrea",
+        "common": "Eritrea"
+      },
+      "deu": {
+        "official": "Staat Eritrea",
+        "common": "Eritrea"
+      },
+      "est": {
+        "official": "Eritrea Riik",
+        "common": "Eritrea"
+      },
+      "fin": {
+        "official": "Eritrean valtio",
+        "common": "Eritrea"
+      },
+      "fra": {
+        "official": "État d'Érythrée",
+        "common": "Érythrée"
+      },
+      "hrv": {
+        "official": "Država Eritreji",
+        "common": "Eritreja"
+      },
+      "hun": {
+        "official": "Eritrea",
+        "common": "Eritrea"
+      },
+      "ita": {
+        "official": "Stato di Eritrea",
+        "common": "Eritrea"
+      },
+      "jpn": {
+        "official": "エリトリア国",
+        "common": "エリトリア"
+      },
+      "kor": {
+        "official": "에리트레아국",
+        "common": "에리트레아"
+      },
+      "nld": {
+        "official": "Staat Eritrea",
+        "common": "Eritrea"
+      },
+      "per": {
+        "official": "جمهوری اریتره",
+        "common": "اریتره"
+      },
+      "pol": {
+        "official": "Państwo Erytrea",
+        "common": "Erytrea"
+      },
+      "por": {
+        "official": "Estado da Eritreia",
+        "common": "Eritreia"
+      },
+      "rus": {
+        "official": "Государство Эритрея",
+        "common": "Эритрея"
+      },
+      "slk": {
+        "official": "Eritrejský štát",
+        "common": "Eritrea"
+      },
+      "spa": {
+        "official": "Estado de Eritrea",
+        "common": "Eritrea"
+      },
+      "srp": {
+        "official": "Држава Еритреја",
+        "common": "Еритреја"
+      },
+      "swe": {
+        "official": "Staten Eritrea",
+        "common": "Eritrea"
+      },
+      "tur": {
+        "official": "Eritre Devleti",
+        "common": "Eritre"
+      },
+      "urd": {
+        "official": "ریاستِ ارتریا",
+        "common": "ارتریا"
+      },
+      "zho": {
+        "official": "厄立特里亚",
+        "common": "厄立特里亚"
+      }
+    },
+    "latlng": [
+      15,
+      39
+    ],
+    "landlocked": false,
+    "borders": [
+      "DJI",
+      "ETH",
+      "SDN"
+    ],
+    "area": 117600,
+    "demonyms": {
+      "eng": {
+        "f": "Eritrean",
+        "m": "Eritrean"
+      },
+      "fra": {
+        "f": "Érythréenne",
+        "m": "Érythréen"
+      }
+    },
+    "flag": "🇪🇷",
+    "maps": {
+      "googleMaps": "https://goo.gl/maps/HRyqUpnPwwG6jY5j6",
+      "openStreetMaps": "https://www.openstreetmap.org/relation/296961"
+    },
+    "population": 5352000,
+    "fifa": "ERI",
+    "car": {
+      "signs": [
+        "ER"
+      ],
+      "side": "right"
+    },
+    "timezones": [
+      "UTC+03:00"
+    ],
+    "continents": [
+      "Africa"
+    ],
+    "flags": {
+      "png": "https://flagcdn.com/w320/er.png",
+      "svg": "https://flagcdn.com/er.svg",
+      "alt": "The flag of Eritrea comprises three triangles — a large red isosceles triangle with its base spanning the hoist end and its apex at the midpoint on the fly end, and a green and blue right-angled triangle above and beneath the red triangle. On the hoist side of the red triangle is a golden vertical olive branch encircled by a golden olive wreath."
+    },
+    "coatOfArms": {
+      "png": "https://mainfacts.com/media/images/coats_of_arms/er.png",
+      "svg": "https://mainfacts.com/media/images/coats_of_arms/er.svg"
+    },
+    "startOfWeek": "monday",
+    "capitalInfo": {
+      "latlng": [
+        15.33,
+        38.93
+      ]
+    }
+  }
+]
+==================================================================================================
+Sure! Below is the RAML specification for your endpoint based on the information you've provided:
+#%RAML 1.0
+title: Cloudhub Application
+baseUri: http://api.cloudhub.com/
+protocols: [HTTP]
+
+/types:
+  CountryResponse:
+    type: object
+    properties:
+      name:
+        type: object
+        properties:
+          common: string
+          official: string
+          nativeName: object
+      tld: array
+      cca2: string
+      ccn3: string
+      #... (Other properties based on the provided data)
+      maps:
+        type: object
+        properties:
+          googleMaps: string
+          openStreetMaps: string
+      #... (Continue with other properties as required)
+
+/restcountries:
+  get:
+    description: Fetch details about countries
+    queryParameters:
+      name?:
+        description: Name of the country
+        type: string
+      population?:
+        description: Population of the country
+        type: integer
+      totalNumber?:
+        description: Some total number related to the country (needs clearer definition)
+        type: integer
+      order?:
+        description: Order of the countries to be fetched
+        enum: [ascend, descend]
+    responses:
+      200:
+        body:
+          application/json:
+            type: CountryResponse[]
+            example: |
+              [
+                {
+                  "name": {
+                    "common": "Mauritania",
+                    "official": "Islamic Republic of Mauritania",
+                    #... (Other example data)
+                  },
+                  #... (Other countries and their data)
+                }
+              ]
+
+
+Notes:
+
+The /types section is used to define the structure of the response. You would expand upon the properties (fields) as per the provided data. I only included a subset for illustration.
+
+The /restcountries section defines the GET endpoint, its possible query parameters, and the expected response format.
+
+You can expand upon the CountryResponse type to include all the fields and nested properties in your example data.
+
+Remember to adjust the base URI and other fields based on your actual deployment details.
+
+
+================================================================================================
+Base on the provided RAML generate the XML-based implementation flow.Generate the HTTP connector with GET method and /restcountries endpoint with standard HTTP connector settings(host - localhost,port - 8081).Flow name should be -implementation.
+After HTTP connector we should have logger component that logged all available queryparameters from request if present(default value is equal to empty string-"" for name an order and default value 0 for population and totalNumber).Put transform message component after logger and create variables inside transform message component for each queryparameter if present(default value is equal to empty string-"" for name an order and default value 0 for population and totalNumber)
+After transform message component we should create the request(using HTTP Request component) to the public `REST Countries` API using endpoint https://restcountries.com/v3.1/all
+Store retrieved information into the variable called "restCountries" using output type application/json.
+==========================================================================================================
+Given your requirements, I'll guide you through the creation of an XML-based Mule flow using MuleSoft's Anypoint Studio syntax.
+
+Firstly, let's create an HTTP listener to capture requests:
+<http:listener-config name="HTTP_Listener_config" host="localhost" port="8081" doc:name="HTTP Listener config" />
+Now, let's create the Mule flow:
+<mule>
+    <!-- HTTP Listener -->
+    <flow name="implementation">
+        <http:listener config-ref="HTTP_Listener_config" path="/restcountries" doc:name="HTTP Listener">
+            <http:response statusCode="#[200]" />
+            <http:error-response statusCode="#[500]" />
+        </http:listener>
+        
+        <!-- Logger Component -->
+        <logger level="INFO" doc:name="Logger">
+            <logger:message>
+                #[
+                    "Query Params: " ++ 
+                    "Name: " ++ (attributes.queryParams.'name' default "") ++ 
+                    " Order: " ++ (attributes.queryParams.'order' default "") ++
+                    " Population: " ++ (attributes.queryParams.'population' default "0") ++
+                    " TotalNumber: " ++ (attributes.queryParams.'totalNumber' default "0")
+                ]
+            </logger:message>
+        </logger>
+        
+        <!-- Transform Message Component -->
+        <ee:transform doc:name="Transform Message">
+            <ee:message>
+            </ee:message>
+            <ee:variables>
+                <ee:set-variable variableName="nameVar"><![CDATA[#[attributes.queryParams.'name' default ""]]></ee:set-variable>
+                <ee:set-variable variableName="orderVar"><![CDATA[#[attributes.queryParams.'order' default ""]]></ee:set-variable>
+                <ee:set-variable variableName="populationVar"><![CDATA[#[attributes.queryParams.'population' default 0]]]></ee:set-variable>
+                <ee:set-variable variableName="totalNumberVar"><![CDATA[#[attributes.queryParams.'totalNumber' default 0]]]></ee:set-variable>
+            </ee:variables>
+        </ee:transform>
+        
+        <!-- HTTP Request Component -->
+        <http:request-config name="HTTP_Request_Configuration" protocol="HTTPS" host="restcountries.com" port="443" doc:name="HTTP Request Configuration" />
+        
+        <http:request method="GET" path="/v3.1/all" config-ref="HTTP_Request_Configuration" doc:name="HTTP Request">
+            <http:response-validator>
+                <http:success-status-code-validator values="200..299" />
+            </http:response-validator>
+        </http:request>
+        
+        <!-- Set Payload as Variable -->
+        <set-variable variableName="restCountries" value="#[payload]" doc:name="Set restCountries Variable" mimeType="application/json"/>
+    </flow>
+</mule>
+
+Here's a breakdown of the XML:
+
+An HTTP Listener component is set up to listen to requests on localhost:8081/restcountries.
+The Logger component logs query parameters like name, order, population, and totalNumber, defaulting to the specified values if they aren't present.
+The Transform Message component captures the query parameters and sets them as variables using the default values where necessary.
+An HTTP Request component is configured to make a GET request to the public REST Countries API.
+The retrieved payload from the request is then stored into a variable named restCountries with a MIME type of application/json.
+This Mule configuration fulfills your requirements. Ensure you have the necessary MuleSoft namespaces included at the top of your XML for this to work correctly.
