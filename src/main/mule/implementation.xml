@@ -78,7 +78,7 @@ fun countrySorting(countries, order) =
     if (order == "ascend")
         countries orderBy ((country) -> lower(country.name.common))
     else if (order == "descend")
-        countries orderBy ((country) -> -lower(country.name.common))
+        (countries orderBy ((country) -> lower(country.name.common)))[-1 to 0]
     else
         countries
 
