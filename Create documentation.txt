@@ -1,0 +1,142 @@
+Using all this information create please README content on how people can use this API that we have build.It should have 2 paragraphs, 4-10 Sentences
+And provide at least 10 examples of how to use the developed endpoint.For example - 
+-if we have no queryPamameters than we can get data without any logic of filtration and sorting
+- if we have "population"queryparameter - according to my description - The filter should search for countries where the population is less than provided number from "populationVar" variable in the millions of people (e.g., by providing value `10`, I should find countries with a population less than 10m)
+If "population" queryParameter=zero(0) - no filtering is performing
+Describe all function that we have build with some small examples
+
+
+=================================================================================
+README for Country API
+
+Welcome to the Country API, a robust solution designed to retrieve country-related information tailored to your requirements. Whether you need a comprehensive list, specific country details, or even populations within a range, this API has got you covered. You can fetch countries based on names, order the list in ascending or descending fashion, filter based on population, or even limit the number of results you get.
+
+The API is driven by query parameters, allowing users to tailor the output based on their needs. Here's how it works:
+
+No Query Parameters: Simply fetches the entire list of countries without any filter or sorting logic.
+
+Example:
+
+bash
+Copy code
+GET /countryAPI
+Name Filter (countryName function): Uses the name query parameter to filter countries containing the provided name substring.
+
+Example:
+
+bash
+Copy code
+GET /countryAPI?name=est
+This will retrieve countries with names containing 'est', like Estonia.
+
+Population Filter (countryPopulation function): Uses the population query parameter. The filter searches for countries where the population is less than the provided number, in millions.
+
+Example:
+
+bash
+Copy code
+GET /countryAPI?population=10
+Retrieves countries with a population of fewer than 10 million people.
+
+Remember, if the population parameter equals 0, no filtering occurs.
+
+Sorting (countrySorting function): Uses the order query parameter. You can sort countries in ascending or descending order based on their names.
+
+Examples:
+
+sql
+Copy code
+GET /countryAPI?order=ascend
+Lists countries in ascending order of their names.
+
+sql
+Copy code
+GET /countryAPI?order=descend
+Lists countries in descending order of their names.
+
+Pagination (countriesNumber function): Uses the totalNumber query parameter to limit the number of countries returned.
+
+Example:
+
+bash
+Copy code
+GET /countryAPI?totalNumber=5
+Returns only the first five countries.
+
+You can also combine these functions. For example:
+
+Name and Population Filters Combined:
+
+Example:
+
+bash
+Copy code
+GET /countryAPI?name=est&population=2
+Fetches countries with names containing 'est' and with a population less than 2 million.
+
+Sorting and Pagination:
+
+Example:
+
+sql
+Copy code
+GET /countryAPI?order=descend&totalNumber=3
+Returns the first three countries when sorted in descending order.
+
+All Functions Combined:
+
+Example:
+
+sql
+Copy code
+GET /countryAPI?name=us&population=50&order=ascend&totalNumber=2
+Filters countries containing 'us', with populations less than 50 million, lists them in ascending order, and then only displays the first two of the resultant list.
+
+Experiment and combine as needed! Our API is designed to give you the utmost flexibility in retrieving the country data you need.
+===========================================================================
+Provide info/steps - on how to run this application locally in Anypoint Studio(version 7.14)
+=========================================================================================
+Running the Country API Locally in Anypoint Studio (version 7.14):
+
+Prerequisites:
+Java JDK (Java 8 is recommended)
+Anypoint Studio 7.14 installed on your machine
+Country API project source files
+Internet connection (for downloading dependencies)
+Steps:
+Setting Up Anypoint Studio:
+
+Launch Anypoint Studio. If it's your first time, it might ask you to select a workspace. This is the directory where all your projects will be stored.
+Wait for the initialization process to complete.
+Importing the Project:
+
+Click File > Import.
+In the import wizard, select Anypoint Studio > Mule Project from File and click Next.
+Browse to the location of the Country API project source files, select the project's root directory.
+Ensure that the 'Copy projects into workspace' checkbox is checked.
+Click Finish.
+Installing Dependencies:
+
+Anypoint Studio should automatically start downloading required dependencies (like connectors and libraries) from the MuleSoft Exchange and Maven repositories. Ensure you're connected to the internet.
+If there are any errors regarding missing components, right-click on the project in the Package Explorer, then choose Maven > Update Project.
+Configuring the API:
+
+If the Country API requires any specific configurations (like credentials for external services or configuration properties), ensure that you've set them in the respective configuration files or properties.
+Running the API:
+
+Right-click on the project in the Package Explorer.
+Select Run As > Mule Application.
+Studio will build and deploy the project to the embedded Mule runtime.
+Look for the console message like: Started app Country API - this indicates your API is up and running.
+Testing the API:
+
+Once the API is running, you can test it by accessing the endpoints. If you're unsure of the URL, it's typically printed in the console during the startup. For example: http://localhost:8081/countryAPI.
+Use tools like Postman or simply your browser to send GET requests to the provided URLs.
+Stopping the API:
+
+When you want to stop the API, go to the Console tab at the bottom, select the running process, and click on the red square button (Stop) on the top right of the console.
+Troubleshooting:
+
+If you run into port conflicts (e.g., "Address already in use"), it's likely that the default port (like 8081) is already in use. You'll need to update the configuration in your project to use another port.
+If there are issues related to project dependencies or configurations, they will typically be displayed in the console. Reading these error logs can give insights into what needs fixing.
+Now, with the Country API running locally, you can freely test, modify, and experiment with the application in a controlled environment. Happy coding!
