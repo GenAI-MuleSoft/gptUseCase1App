@@ -34,7 +34,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
     
     <!-- If name query parameter is present -->
     <otherwise>
-        <ee:transform doc:name="Filter By Country Name">
+        <ee:transform doc:name="Filter By Country Name &amp; population">
             <ee:message>
                 <ee:set-payload><![CDATA[%dw 2.0
 output application/json
@@ -69,6 +69,31 @@ else
 ]]></ee:set-payload>
             </ee:message>
         </ee:transform>
+				<ee:transform doc:name="Order Countries" doc:id="1fd18dac-f844-4d50-8da5-11b2135a9e43" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+
+fun countrySorting(countries, order) =
+    if (order == "ascend")
+        countries orderBy ((country) -> lower(country.name.common))
+    else if (order == "descend")
+        countries orderBy ((country) -> -lower(country.name.common))
+    else
+        countries
+
+---
+
+countrySorting(payload, vars.orderVar)
+
+
+
+
+
+
+]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
     
 </otherwise>
 </choice>

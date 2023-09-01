@@ -1,0 +1,22 @@
+In the second router we should add new transform message component and new  sort function called countrySorting to this transform message component
+This function  accepts string as a parameter(this parameter should be our "order" queryParameter that we stored previous into the variable called "orderVar") and can sort countries  by `name/common`field  based on the payload example that we have in our RAML specification.
+The sorting should accept string ` ascend or descend ` and sort countries name by provided "orderVar" variable (e.g., providing attribute ascend all countries should be sorted from A to Z)
+If "order" queryParameter=empty string("")  - no sorting is performing.
+
+======================================================================
+%dw 2.0
+output application/json
+
+fun countrySorting(countries, order) =
+    if (order == "ascend")
+        countries orderBy ((country) -> lower(country.name.common))
+    else if (order == "descend")
+        countries orderBy ((country) -> lower(country.name.common)) desc
+    else
+        countries
+
+---
+
+countrySorting(payload, vars.orderVar)
+
+Make sure the second Transform Message component is connected right after the first one in the flow. The results of the first transform component (filtered list of countries) will be the input to the second component, which will perform the sorting.
