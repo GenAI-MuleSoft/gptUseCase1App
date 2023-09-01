@@ -25,7 +25,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
                 <http:success-status-code-validator values="200..299" />
             </http:response-validator>
         </http:request>
-        <set-variable variableName="restCountries" value="#[payload]" doc:name="Set restCountries Variable" mimeType="application/json"/>
+        <set-variable variableName="restCountries" value="#[payload]" doc:name="Set restCountries Variables" mimeType="application/json"/>
         <choice doc:name="Choice">
     <!-- If no query parameters are present -->
     <when expression="#[vars.nameVar == '' and vars.orderVar == '' and vars.populationVar == 0 and vars.totalNumberVar == 0]">
