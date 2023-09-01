@@ -39,14 +39,34 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
                 <ee:set-payload><![CDATA[%dw 2.0
 output application/json
 
-fun countryName(name) = 
+fun countryName(countries, name) = 
     if (name != "") 
-        payload filter (country) -> lower(country.name.common) contains lower(name)
+        countries filter (country) -> lower(country.name.common) contains lower(name)
     else 
-        payload
+        countries
+
+fun countryPopulation(countries, population) = 
+    if (population > 0)
+        countries filter (country) -> country.population < (population * 1000000)
+    else
+        countries
 
 ---
-countryName(vars.nameVar)]]></ee:set-payload>
+
+if (vars.nameVar != "" and vars.populationVar == 0)
+    countryName(payload, vars.nameVar)
+else if (vars.nameVar == "" and vars.populationVar > 0)
+    countryPopulation(payload, vars.populationVar)
+else if (vars.nameVar != "" and vars.populationVar > 0)
+    countryName(payload, vars.nameVar) filter (country) -> country.population < (vars.populationVar * 1000000)
+else
+    payload
+
+
+
+
+
+]]></ee:set-payload>
             </ee:message>
         </ee:transform>
     
