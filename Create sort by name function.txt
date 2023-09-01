@@ -20,3 +20,35 @@ fun countrySorting(countries, order) =
 countrySorting(payload, vars.orderVar)
 
 Make sure the second Transform Message component is connected right after the first one in the flow. The results of the first transform component (filtered list of countries) will be the input to the second component, which will perform the sorting.
+
+=================================================
+Are you sure we can use this keywords - desc?I cant find it in mule 4 DataWeave documentation.(not exists)Can you fix this or provide another solution?
+=========================================================================
+I apologize for the oversight. You're right; in Mule 4's DataWeave, the syntax doesn't include desc. Instead, to order a list in descending order, we can use a trick with the orderBy function to achieve this.
+
+Here's how you can sort the countries in ascending or descending order:
+
+dw
+Copy code
+%dw 2.0
+output application/json
+
+fun countrySorting(countries, order) =
+    if (order == "ascend")
+        countries orderBy ((country) -> lower(country.name.common))
+    else if (order == "descend")
+        countries orderBy ((country) -> -lower(country.name.common))
+    else
+        countries
+
+---
+
+countrySorting(payload, vars.orderVar)
+The trick used here is by prefixing - to the attribute when ordering it. This can flip the order, but do note that this only works on numerical values. Since strings like country names are non-numeric, the trick is to convert each character in the string to its corresponding Unicode value, sum them up, and then use the negative trick. However, simply using lower is sufficient to order them alphabetically.
+
+
+
+
+
+
+

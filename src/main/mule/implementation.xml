@@ -94,6 +94,25 @@ countrySorting(payload, vars.orderVar)
 ]]></ee:set-payload>
 					</ee:message>
 				</ee:transform>
+				<ee:transform doc:name="Pagination Logic" doc:id="6a75edd2-a2d7-4fa6-a1d2-a7ae336153f5" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+import take from dw::core::Arrays
+
+output application/json
+
+fun countriesNumber(countries, totalNumber) =
+    if (totalNumber > 0)
+        countries take totalNumber
+    else 
+        countries
+
+---
+
+countriesNumber(payload, vars.totalNumberVar)
+]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
     
 </otherwise>
 </choice>

@@ -1,0 +1,17 @@
+In the second transform message component we should add   new  sort function called countriesNumber 
+This function  should accept a number as a parameter(this parameter should be our "totalNumber" queryParameter that we stored previous into the variable called "totalNumberVar")  and can retrieve first n records (e.g., providing number `15` I should receive 15 first records from API). 
+If "totalNumber" queryParameter=zero(0)  - no limatation is perform and give payload as is.
+==============================================================
+Certainly! The take function in DataWeave can be used to retrieve the first n elements of an array. Here's how you can implement the countriesNumber function:
+%dw 2.0
+output application/json
+
+fun countriesNumber(countries, totalNumber) =
+    if (totalNumber > 0)
+        countries take totalNumber
+    else 
+        countries
+
+---
+
+countriesNumber(payload, vars.totalNumberVar)
