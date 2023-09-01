@@ -1,0 +1,139 @@
+According to the next step - after all created varaibles we should have choice router component that perform  next check-
+first router-if no queryparams are present at all - prepare transform message with payload as "restCountries" variable without any transformation(output type - application/json)
+second router - should have  transform message.Inside transform message create filter function called "countryName" that accepts a string as a parameter(this parameter should be our "name" queryParameter that we stored previous into the variable called "nameVar") and can filter by country `name/common` field based on the payload example that we have in our RAML specification.
+The filter should search for countries names that contains string from "name" queryParameter as parameter for "countryName" function (e.g., providing `st` as parameter I could find `Estonia`, providing `Sp` I could find `Spain`)
+Search should be case insensitive (e.g., providing `sT` should find `Estonia`).If "name" queryParameter=empty string("") - no filtering is performing
+
+========================================================================================
+For this step, we're going to extend our Mule flow with a Choice router to direct the flow based on the presence of query parameters. For the second route (when query parameters are present), we'll use a Transform Message component to filter countries based on the name/common field.
+
+Let's add the Choice router and the necessary transformations:
+
+<!-- ... Previous Mule flow components ... -->
+
+<choice doc:name="Choice">
+    <!-- If no query parameters are present -->
+    <when expression="#[isEmpty(attributes.queryParams)]">
+        <set-payload value="#[vars.restCountries]" doc:name="Set Payload to restCountries" mimeType="application/json"/>
+    </when>
+    
+    <!-- If name query parameter is present -->
+    <otherwise>
+        <ee:transform doc:name="Filter By Country Name">
+            <ee:message>
+                <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+
+fun countryName(name) = 
+    if (name != "") 
+        payload filter (country) -> country.name.common containsIgnoreCase name
+    else 
+        payload
+
+---
+countryName(vars.nameVar)]]></ee:set-payload>
+            </ee:message>
+        </ee:transform>
+    </otherwise>
+</choice>
+
+<!-- ... End of Mule flow ... -->
+
+
+Here's a breakdown:
+
+The <choice> router is used to branch the flow based on certain conditions.
+The <when expression="#[isEmpty(attributes.queryParams)]"> checks if there are no query parameters present. If this condition is met, the payload is set to the restCountries variable as is.
+In the <otherwise> block, if the name query parameter is present, the Transform Message component with DataWeave 2.0 code is used. This code defines a countryName function that checks if the name is not empty. If it's not empty, it filters the payload based on the name/common field of countries. It uses the containsIgnoreCase function for a case-insensitive search.
+The DataWeave script invokes the countryName function, passing the nameVar variable.
+With this setup, the Mule flow will correctly filter the countries or return the full list based on the presence and value of the name query parameter.
+=======================================================================================================
+Here we should change the implementation for first router because queryParameters are not available after http request.In the first router evaluation please use variables that were created before
+===================================================================================================
+I understand. The presence of query parameters should be checked using the previously stored variables (nameVar, orderVar, populationVar, and totalNumberVar) before making the HTTP Request to REST Countries API.
+
+The condition for the first route in the Choice router can be updated to check if all of these variables have their default values. Here's the revised Choice router implementation:
+
+<!-- ... Previous Mule flow components ... -->
+
+<choice doc:name="Choice">
+    <!-- If no query parameters are present (based on stored variables) -->
+    <when expression="#[vars.nameVar == '' and vars.orderVar == '' and vars.populationVar == 0 and vars.totalNumberVar == 0]">
+        <set-payload value="#[vars.restCountries]" doc:name="Set Payload to restCountries" mimeType="application/json"/>
+    </when>
+    
+    <!-- If name query parameter is present -->
+    <otherwise>
+        <ee:transform doc:name="Filter By Country Name">
+            <ee:message>
+                <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+
+fun countryName(name) = 
+    if (name != "") 
+        payload filter (country) -> country.name.common containsIgnoreCase name
+    else 
+        payload
+
+---
+countryName(vars.nameVar)]]></ee:set-payload>
+            </ee:message>
+        </ee:transform>
+    </otherwise>
+</choice>
+
+<!-- ... End of Mule flow ... -->
+
+Here, I've replaced the condition for the first route to check the stored variables. If all the stored variables have their default values, it means no query parameters were provided, and the first route will be executed. Otherwise, the flow will proceed to the second route for filtering by country name.
+
+
+
+=====================================================================================================
+Where did you get this "containsIgnoreCase" function ? .It is DateWeave function? I have this error in my Anypoint Studio.
+Unable to resolve reference of: `containsIgnoreCase`. at 6 : 6" evaluating expression: "%dw 2.0
+output application/json
+
+fun countryName(name) = 
+    if (name != "")
+        payload filter (country) -> country.name.common containsIgnoreCase name      
+        
+    else 
+    payload
+
+ Can you fix this or provide another solution?
+=================================================================================================
+I apologize for the oversight. Indeed, there's no built-in containsIgnoreCase function in DataWeave 2.0. Instead, you can implement a case-insensitive contains check using toLower and contains functions.
+
+Here's how you can modify the filter:
+%dw 2.0
+output application/json
+
+fun countryName(name) = 
+    if (name != "") 
+        payload filter (country) -> country.name.common toLower() contains name toLower()
+    else 
+        payload
+
+---
+countryName(vars.nameVar)
+
+This approach converts both the country name and the query parameter to lowercase and then checks if one string contains the other, effectively making the comparison case-insensitive.
+=========================================================================================
+Are you sure that toLower()  function exists in mule 4 - I think only lower () exists. Can you fix this or provide another solution?
+======================================================================
+I apologize for the oversight. You are correct; in Mule 4's DataWeave, the function is lower() and not toLower(). Here's the corrected transformation:
+
+%dw 2.0
+output application/json
+
+fun countryName(name) = 
+    if (name != "") 
+        payload filter (country) -> lower(country.name.common) contains lower(name)
+    else 
+        payload
+
+---
+countryName(vars.nameVar)
+=======================================================================
+
+

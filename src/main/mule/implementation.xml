@@ -26,6 +26,32 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
             </http:response-validator>
         </http:request>
         <set-variable variableName="restCountries" value="#[payload]" doc:name="Set restCountries Variable" mimeType="application/json"/>
+        <choice doc:name="Choice">
+    <!-- If no query parameters are present -->
+    <when expression="#[vars.nameVar == '' and vars.orderVar == '' and vars.populationVar == 0 and vars.totalNumberVar == 0]">
+        <set-payload value="#[vars.restCountries]" doc:name="Set Payload to restCountries" mimeType="application/json"/>
+    </when>
+    
+    <!-- If name query parameter is present -->
+    <otherwise>
+        <ee:transform doc:name="Filter By Country Name">
+            <ee:message>
+                <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+
+fun countryName(name) = 
+    if (name != "") 
+        payload filter (country) -> lower(country.name.common) contains lower(name)
+    else 
+        payload
+
+---
+countryName(vars.nameVar)]]></ee:set-payload>
+            </ee:message>
+        </ee:transform>
+    
+</otherwise>
+</choice>
     
 </flow>
 </mule>
